@@ -1,0 +1,32 @@
+{% extends 'users/userbase.html'%}
+{%block contents%}
+
+
+    <header>
+        <div class="container">
+            <div class="intro-text">
+<!--        <div class="container" style="margin-top:-200px;">-->
+<pre>
+    Results: for The Product <strong><font color:RED>{{productName}}</font> </strong>
+    {{result|safe}}
+    </pre>
+        <form action="{%url 'user_predictions'%}" class="control-form" method="post">
+            {%csrf_token%}
+            <table class="sm-table">
+                         <tr>
+                             <td>Select Products</td>
+                             <td>
+                                 <select name="pname" id="" style="color:Black">
+                                     {%for p in products%}
+                                     <option value="{{p}}">{{p}}</option>
+                                     {%endfor%}
+                                 </select>
+                             </td>
+                         </tr>
+                        <tr><td></td><td><button type="submit" class="btn-primary">Submit</button> </td></tr>
+            </table>
+        </form>
+            </div>
+        </div>
+    </header>
+{%endblock%}
